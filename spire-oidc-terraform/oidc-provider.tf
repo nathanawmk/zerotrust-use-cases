@@ -1,6 +1,6 @@
 
 data "tls_certificate" "scytale-oidc" {
-  
+
   url = "https://${aws_route53_record.www.name}"
 
   depends_on = [time_sleep.wait_90_seconds]
@@ -10,10 +10,13 @@ data "tls_certificate" "scytale-oidc" {
 resource "aws_iam_openid_connect_provider" "scytale-oidc" {
   url = "https://${aws_route53_record.www.name}"
 
-  client_id_list = ["mys3",]
+  client_id_list = ["mys3", ]
 
   thumbprint_list = [data.tls_certificate.scytale-oidc.certificates.0.sha1_fingerprint]
 
   depends_on = [data.tls_certificate.scytale-oidc]
 
+  tags = {
+    yor_trace = "b169b207-61cb-4d87-bf49-2d39c856f017"
+  }
 }
