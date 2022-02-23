@@ -2,6 +2,9 @@
 resource "aws_acm_certificate" "default" {
   domain_name       = var.domainName
   validation_method = "DNS"
+  tags = {
+    yor_trace = "5b1b3844-06ab-4163-9cf0-f47d3e1deaa0"
+  }
 }
 
 data "aws_route53_zone" "external" {

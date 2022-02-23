@@ -32,4 +32,7 @@ resource "aws_iam_policy" "oidc-federation-spire-policy" {
     ]
 }
 EOT
+  tags = {
+    yor_trace = "1725b74d-4386-4bd0-9a1e-e8840ae0bbbc"
+  }
 }

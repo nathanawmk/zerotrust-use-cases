@@ -2,7 +2,7 @@
 resource "aws_elb" "oidc-elb" {
   name               = var.elbName
   availability_zones = [var.availabilityZone]
-  security_groups    = var.securityGroups 
+  security_groups    = var.securityGroups
 
   listener {
     instance_port      = 8080
@@ -27,7 +27,8 @@ resource "aws_elb" "oidc-elb" {
   connection_draining_timeout = 400
 
   tags = {
-    Name = "oidc-elb"
+    Name      = "oidc-elb"
+    yor_trace = "aebba5d6-55c1-4cfb-9f9b-7b80e43b2b06"
   }
 
   depends_on = [aws_acm_certificate_validation.default]
